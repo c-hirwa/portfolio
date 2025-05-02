@@ -1,0 +1,119 @@
+/* Cyberpunk Terminal Full Theme */
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #000;
+    font-family: 'Courier New', Courier, monospace;
+    color: #00ff00;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Scanline Overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      rgba(0, 255, 0, 0.05),
+      rgba(0, 255, 0, 0.05) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
+  
+  /* Terminal Frame */
+  .terminal {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    background-color: #000;
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 20px #00ff00;
+    padding: 1rem;
+    z-index: 1;
+    overflow-y: auto;
+  }
+  
+  /* Fake Window Bar */
+  .terminal-header {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .terminal-header .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  .dot.red { background: #ff5f56; }
+  .dot.yellow { background: #ffbd2e; }
+  .dot.green { background: #27c93f; }
+  
+  /* Typing Effect */
+  .line {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #00ff00;
+    width: 0;
+    animation: typing 2.5s steps(40, end) forwards, blink 0.75s step-end infinite;
+  }
+  
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+  
+  /* Prompt */
+  .prompt {
+    display: flex;
+    align-items: center;
+  }
+  
+  .prompt span {
+    color: #00ff00;
+    margin-right: 0.5rem;
+  }
+  
+  .prompt input {
+    background: transparent;
+    border: none;
+    color: #00ff00;
+    font-family: inherit;
+    outline: none;
+    caret-color: #00ff00;
+  }
+  
+  /* Scrollbar for terminal */
+  .terminal::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .terminal::-webkit-scrollbar-thumb {
+    background: #00ff00;
+    border-radius: 5px;
+  }
+  
